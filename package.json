@@ -4,45 +4,43 @@
   "description": "My frivolous fantasy after I heard about the signals proposal",
   "author": "Andrey Sakharov <caxap_8787@mail.ru> (https://www.linkedin.com/in/andrey-sakharov/)",
   "license": "MIT",
-  "main": "dist/index.cjs",
-  "typings": "dist/index.d.ts",
+  "type": "module",
+  "main": "index.cjs",
+  "module": "index.mjs",
+  "typings": "index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/es6/index.mjs"
+      "require": "./index.cjs",
+      "import": "./index.mjs",
+      "types": "./index.d.ts"
     }
   },
   "engines": {
     "node": ">=20.12.1"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "lint_ci": "tslint 'src/**/*.ts'",
-    "lint_staged": "lint-staged",
-    "audit": "npm audit | grep 'found' | grep -E 'moderate|high|critical' && exit 1 || exit 0",
     "test": "node --test",
     "test_coverage": "node --test --experimental-test-coverage --test-reporter=spec --test-reporter=tap --test-reporter-destination=stdout --test-reporter-destination=coverage.txt",
-    "prebuild": "rm -rf dist || npx rimraf dist",
     "prepare": "husky || echo 'skip husky install'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/muturgan/silly-signals.git"
   },
-  "keywords": ["signal"],
+  "keywords": [
+    "signal"
+  ],
   "bugs": {
     "url": "https://github.com/muturgan/silly-signals/issues"
   },
   "homepage": "https://github.com/muturgan/silly-signals#readme",
   "files": [
-    "dist",
-    "!dist/tests/*"
+    "index.cjs",
+    "index.mjs",
+    "index.d.ts"
   ],
   "devDependencies": {
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
-    "ts-node": "^10.9.2",
-    "tslint": "^6.1.3",
-    "typescript": "^5.4.4"
+    "@types/node": "^20.12.7",
+    "husky": "^9.0.11"
   }
 }
